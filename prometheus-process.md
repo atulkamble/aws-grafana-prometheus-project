@@ -59,8 +59,8 @@ To run the `./prometheus` process with a configuration file (`prometheus.yml`) i
      ExecStart=/path/to/prometheus --config.file=/path/to/prometheus.yml
      WorkingDirectory=/path/to/prometheus
      Restart=always
-     User=your_user
-     Group=your_group
+     User=ec2-user
+     Group=ec2-user
 
      [Install]
      WantedBy=multi-user.target
