@@ -67,7 +67,7 @@ cd prometheus-2.45.0.linux-amd64
 
 *Configure Logging*
 
-a. Install and Configure Loki for Log Aggregation
+// Install and Configure Loki for Log Aggregation
 
 // Download Loki:
 ```
@@ -76,7 +76,10 @@ unzip loki-linux-amd64.zip
 chmod +x loki-linux-amd64
 ```
 
-	2.	Create a Configuration File (loki-config.yaml):
+// Create a Configuration File (loki-config.yaml):
+```
+touch loki-config.yaml
+```
 ```
 auth_enabled: false
 
@@ -112,7 +115,7 @@ limits_config:
   reject_old_samples_max_age: 168h
 ```
 
-	3.	Start Loki:
+// Start Loki:
 ```
 ./loki-linux-amd64 --config.file=loki-config.yaml
 ```
