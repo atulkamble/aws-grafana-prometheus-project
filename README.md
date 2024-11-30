@@ -9,7 +9,7 @@ Setting up Grafana on an AWS EC2 instance involves several steps including insta
 	•	Choose an Amazon Linux 2 or Ubuntu AMI.
 	•	Select an instance type (e.g., t2.micro for testing purposes).
 	•	Configure security group:
-	•	Allow inbound rules for SSH (port 22) and HTTP (port 3000 for Grafana) & 9090
+	•	Allow inbound rules for SSH (port 22) and HTTP (port 3000 for Grafana) & 9090, 3100, 9080
 	2.	SSH into the Instance:
 ```
 ssh -i <your-key.pem> ec2-user@<your-ec2-public-ip>
