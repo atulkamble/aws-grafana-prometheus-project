@@ -81,7 +81,7 @@ chmod +x loki-linux-amd64
 ```
 
 	2.	Create a Configuration File (loki-config.yaml):
-
+```
 auth_enabled: false
 
 server:
@@ -114,12 +114,12 @@ limits_config:
   enforce_metric_name: false
   reject_old_samples: true
   reject_old_samples_max_age: 168h
-
+```
 
 	3.	Start Loki:
-
+```
 ./loki-linux-amd64 --config.file=loki-config.yaml
-
+```
 
 	4.	Add Loki as a Data Source in Grafana:
 	•	Go to Configuration > Data Sources in Grafana.
@@ -135,18 +135,18 @@ limits_config:
 	•	Add a notification channel (e.g., Email, Slack, PagerDuty).
 	3.	Set Up SMTP for Email Alerts:
 Edit Grafana configuration file (/etc/grafana/grafana.ini):
-
+```
 [smtp]
 enabled = true
 host = smtp.example.com:587
 user = your-smtp-username
 password = your-smtp-password
 from_address = grafana@example.com
-
+```
 Restart Grafana:
-
+```
 sudo systemctl restart grafana-server
-
+```
 6. Monitoring and Analysis
 
 	1.	Dashboards:
@@ -159,7 +159,7 @@ sudo systemctl restart grafana-server
 7. Automate Setup with a Script
 
 Create a script (setup-grafana.sh) for installation and configuration:
-
+```
 #!/bin/bash
 
 # Update and install Grafana
@@ -186,11 +186,11 @@ chmod +x loki-linux-amd64
 
 # Print access information
 echo "Grafana is available at http://<EC2-PUBLIC-IP>:3000"
-
+```
 Run the script:
-
+```
 bash setup-grafana.sh
-
+```
 8. Secure Grafana
 
 	1.	Update the Admin Password:
