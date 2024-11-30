@@ -65,11 +65,11 @@ cd prometheus-2.45.0.linux-amd64
 	•	Navigate to http://<your-ec2-public-ip>:3000 and log in (admin/admin by default).
 	•	Go to Configuration > Data Sources and add Prometheus as a source with http://localhost:9090.
 
-4. Configure Logging
+*Configure Logging*
 
 a. Install and Configure Loki for Log Aggregation
 
-	1.	Download Loki:
+// Download Loki:
 ```
 wget https://github.com/grafana/loki/releases/download/v2.9.0/loki-linux-amd64.zip
 unzip loki-linux-amd64.zip
