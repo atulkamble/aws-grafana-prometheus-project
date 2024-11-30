@@ -11,59 +11,59 @@ Setting up Grafana on an AWS EC2 instance involves several steps including insta
 	•	Configure security group:
 	•	Allow inbound rules for SSH (port 22) and HTTP (port 3000 for Grafana).
 	2.	SSH into the Instance:
-
+```
 ssh -i <your-key.pem> ec2-user@<your-ec2-public-ip>
-
+```
 2. Install Grafana
 
 On Amazon Linux 2
 
 	1.	Install Grafana via Yum Repository:
-
+```
 sudo yum install -y https://dl.grafana.com/oss/release/grafana-9.5.2-1.x86_64.rpm
-
+```
 
 	2.	Start and Enable Grafana:
-
+```
 sudo systemctl start grafana-server
 sudo systemctl enable grafana-server
-
+```
 On Ubuntu
 
 	1.	Update and Install Dependencies:
-
+```
 sudo apt update
 sudo apt install -y software-properties-common
-
+```
 
 	2.	Add Grafana APT Repository and Install:
-
+```
 wget -q -O - https://packages.grafana.com/gpg.key | sudo apt-key add -
 echo "deb https://packages.grafana.com/oss/deb stable main" | sudo tee /etc/apt/sources.list.d/grafana.list
 sudo apt update
 sudo apt install -y grafana
-
+```
 
 	3.	Start and Enable Grafana:
-
+```
 sudo systemctl start grafana-server
 sudo systemctl enable grafana-server
-
+```
 3. Configure Monitoring
 
 a. Install and Configure Prometheus (Optional for Monitoring Data)
 
 	1.	Download Prometheus:
-
+```
 wget https://github.com/prometheus/prometheus/releases/download/v2.45.0/prometheus-2.45.0.linux-amd64.tar.gz
 tar xvfz prometheus-2.45.0.linux-amd64.tar.gz
 cd prometheus-2.45.0.linux-amd64
-
+```
 
 	2.	Run Prometheus:
-
+```
 ./prometheus --config.file=prometheus.yml
-
+```
 
 	3.	Add Prometheus as a Data Source in Grafana:
 	•	Navigate to http://<your-ec2-public-ip>:3000 and log in (admin/admin by default).
@@ -74,11 +74,11 @@ cd prometheus-2.45.0.linux-amd64
 a. Install and Configure Loki for Log Aggregation
 
 	1.	Download Loki:
-
+```
 wget https://github.com/grafana/loki/releases/download/v2.9.0/loki-linux-amd64.zip
 unzip loki-linux-amd64.zip
 chmod +x loki-linux-amd64
-
+```
 
 	2.	Create a Configuration File (loki-config.yaml):
 
