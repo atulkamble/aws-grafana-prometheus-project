@@ -42,3 +42,53 @@ docker-compose up -d
 ```
 
 ---
+
+### **2. Instrument Your Application for Monitoring**
+- Add **Prometheus client libraries** to your app for exposing metrics:
+  - **Python**: Use `prometheus_client`.
+    ```python
+    from prometheus_client import start_http_server, Counter
+
+    REQUEST_COUNT = Counter('app_requests', 'Total requests')
+    start_http_server(8000)
+
+    @app.route('/')
+    def index():
+        REQUEST_COUNT.inc()
+        return "Hello, Prometheus!"
+    ```
+  - **Node.js**: Use `prom-client`.
+
+- Expose metrics at an endpoint like `/metrics`.
+
+---
+
+### **3. Visualize Data in Grafana**
+1. **Access Grafana**:
+   - Open `http://<grafana_host>:3000`.
+   - Default credentials: `admin/admin`.
+
+2. **Add Prometheus Data Source**:
+   - Go to **Configuration > Data Sources**.
+   - Select **Prometheus**.
+   - Set URL to `http://prometheus:9090` (for Docker).
+
+3. **Create Dashboards**:
+   - Use **Explore** to query metrics (`app_requests_total`).
+   - Import pre-built dashboards from Grafana Marketplace or create custom panels.
+
+---
+
+### **4. (Optional) Deploy on Kubernetes**
+- Use Helm charts to deploy:
+  ```bash
+  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+  helm repo update
+  helm install prometheus prometheus-community/kube-prometheus-stack
+  ```
+
+- Expose your app’s metrics via a ServiceMonitor or PodMonitor.
+
+---
+
+Let me know if you need detailed instructions for any specific step!
