@@ -129,6 +129,10 @@ Run Node Exporter:
 
 Now, add Node Exporter to the **Prometheus configuration**:
 
+```bash
+sudo nano /usr/local/prometheus/prometheus.yml
+```
+
 ```yaml
 scrape_configs:
   - job_name: "node"
