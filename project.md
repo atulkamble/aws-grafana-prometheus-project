@@ -22,4 +22,5 @@ sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-
 sudo chmod +x /usr/local/bin/docker-compose
 
 docker-compose up -d
+docker-compose down -v
 ```
